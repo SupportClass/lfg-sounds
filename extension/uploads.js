@@ -8,7 +8,7 @@ var path           = require('path');
 var upload         = multer({
     dest: 'sounds/',
     storage: multer.diskStorage({
-        destination: path.join(__dirname, './sounds'),
+        destination: path.join(__dirname, '../sounds'),
         filename: function (req, file, cb) {
             cb(null, file.originalname);
         }
