@@ -1,5 +1,6 @@
 'use strict';
 
+var debounce = require('debounce');
 var chokidar = require('chokidar');
 var path = require('path');
 var fs = require('fs');
@@ -23,9 +24,9 @@ module.exports = function(nodecg) {
         usePolling: true // Non-polling is really buggy for us right now.
     });
 
-    watcher.on('add', reloadFiles);
-    watcher.on('change', reloadFiles);
-    watcher.on('unlink', reloadFiles);
+    watcher.on('add', debounce(reloadFiles, 500));
+    watcher.on('change', debounce(reloadFiles, 500));
+    watcher.on('unlink', debounce(reloadFiles, 500));
     watcher.on('error', function(e) {
         nodecg.error(e.stack);
     });

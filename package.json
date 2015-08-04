@@ -1,6 +1,7 @@
 {
   "name": "lfg-sounds",
   "dependencies": {
+    "debounce": "^1.0.0",
     "multer": "^1.0.1"
   }
 }
