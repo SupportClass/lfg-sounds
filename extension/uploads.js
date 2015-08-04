@@ -1,5 +1,6 @@
 'use strict';
 
+var fs             = require('fs');
 var express        = require('express');
 var app            = express();
 var multer         = require('multer');
@@ -33,6 +34,19 @@ module.exports = function(nodecg) {
             }
         }
     );
+
+    app.get('/lfg-sounds/:filename', nodecg.util.authCheck, function (req, res, next) {
+        var resName = req.params.filename;
+        var fileLocation = path.join(__dirname, '../sounds/', resName);
+
+        // Check if the file exists
+        if (!fs.existsSync(fileLocation)) {
+            next();
+            return;
+        }
+
+        res.sendFile(fileLocation);
+    });
 
     nodecg.mount(app);
 };

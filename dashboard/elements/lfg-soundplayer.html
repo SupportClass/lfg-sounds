@@ -1,0 +1,58 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<script src="../components/SoundJS/lib/soundjs-0.6.1.min.js"></script>
+
+<dom-module id="lfg-soundplayer">
+    <template></template>
+</dom-module>
+
+<script>
+(function() {
+    window.lfgSound = {
+        play: function (soundname) {
+        },
+        pause: function (soundname) {
+        },
+        stop: function (soundname) {
+        }
+    };
+
+    createjs.Sound.on('fileload', function (event) {
+        console.log(event.type, event.id, event.src);
+        return;
+
+        // This is fired for each sound that is registered.
+        var instance = createjs.Sound.play("sound");  // play using id.  Could also use full source path or event.src.
+        instance.on("complete", createjs.proxy(this.handleComplete, this));
+        instance.volume = 0.5;
+    });
+
+
+    NodeCG.Replicant('sounds', 'lfg-sounds')
+        .on('change', function(oldVal, newVal) {
+            var manifest = newVal.map(function(sound) {
+                return {
+                    id: sound.name,
+                    src: sound.file
+                }
+            });
+
+            createjs.Sound.registerSounds({
+                path: '/lfg-sounds/',
+                manifest: manifest
+            });
+        });
+
+    NodeCG.Replicant('files', 'lfg-sounds')
+        .on('change', function(oldVal, newVal) {
+
+        });
+
+    /*NodeCG.listenFor('testSound', 'lfg-sounds', function(soundname) {
+        window.lfgSound.play(soundname);
+    });*/
+
+    Polymer({
+        is: 'lfg-soundplayer'
+    });
+})();
+</script>
