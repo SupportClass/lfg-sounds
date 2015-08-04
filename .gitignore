@@ -1,0 +1,10 @@
+# Ignore sounds folder
+/sounds/**
+
+# Don't ignore .empty_directory files
+!.empty_directory
+
+# Dependency directory
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
+node_modules
+bower_components

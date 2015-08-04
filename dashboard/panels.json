@@ -1,0 +1,17 @@
+[
+  {
+    "name": "manage-files",
+    "title": "Sound Files",
+    "width": 2,
+    "file": "panel.html",
+    "faIcon": "fa-volume-up"
+  },
+  {
+    "name": "edit-sounds",
+    "title": "Edit Sounds",
+    "width": 4,
+    "file": "edit-sounds.html",
+    "faIcon": "fa-volume-up",
+    "dialog": true
+  }
+]

@@ -1,0 +1,125 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/paper-slider/paper-slider.html">
+<link rel="import" href="../components/iron-collapse/iron-collapse.html">
+<link rel="import" href="../components/iron-selector/iron-selector.html">
+
+<dom-module id="lfg-soundpanel-sound">
+    <link rel="stylesheet" href="../components/paper-styles/paper-styles.html">
+
+    <style>
+        .heading {
+            padding: 10px 15px;
+            margin-top: 20px;
+            background-color: #f3f3f3;
+            border: 1px solid #dedede;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            width: 100%;
+            text-align: left;
+        }
+
+        .collapse-content {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #dedede;
+            border-top: none;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        iron-selector > * {
+            padding: 8px;
+        }
+
+        .iron-selected {
+            background-color: #ddd;
+        }
+    </style>
+
+    <template>
+       <button class="heading" on-click="toggle">{{name}}</button>
+        <iron-collapse id="collapse">
+            <div class="collapse-content">
+                <div>
+                    <div>Volume</div>
+                    <paper-slider pin min="0" max="100" value="{{volume}}"></paper-slider>
+                </div>
+                <select id="select" name="soundfile" on-change="_onSelectChange">
+                    <option>-- Choose a file --</option>
+                </select>
+            </div>
+        </iron-collapse>
+    </template>
+</dom-module>
+
+<script>
+(function() {
+    Polymer({
+        is: 'lfg-soundpanel-sound',
+        properties: {
+            name: {
+                type: String,
+                reflectToAttribute: true
+            },
+            volume: {
+                type: Number
+            },
+            file: {
+                type: String,
+                observer: 'fileChanged'
+            }
+        },
+
+        fileChanged: function(newVal) {
+            this.$.select.value = newVal;
+        },
+
+        /*
+         * Lifecycle
+         */
+        ready: function() {
+            var self = this;
+            var files = NodeCG.Replicant('files', 'lfg-sounds');
+            files.on('change', function(oldVal, newVal) {
+                var selectContainerDom = Polymer.dom(self.$.selectContainer);
+
+                // Remove all options from the select element
+                while (self.$.select.item(1)) {
+                    self.$.select.remove(1);
+                }
+
+                // For each file, add an option
+                newVal.forEach(function(file) {
+                    var option = document.createElement('option');
+                    option.name = file.filename;
+                    option.value = file.filename;
+                    option.innerText = file.filename;
+                    if (file.filename === self.file) option.setAttribute('selected', true);
+                    self.$.select.add(option);
+                });
+            });
+        },
+
+        /*
+         * Methods
+         */
+
+        toggle: function() {
+            this.$.collapse.toggle();
+        },
+
+        /*
+         * Events
+         */
+
+        _onSelectChange: function(e) {
+            this.file = e.target.value;
+        }
+    });
+})();
+</script>

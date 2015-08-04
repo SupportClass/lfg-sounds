@@ -1,0 +1,14 @@
+{
+  "name": "lfg-sounds",
+  "version": "0.0.0",
+  "nodecgDependency": "~0.7.0",
+  "homepage": "http://supportclass.net",
+  "authors": [
+    "Alex Van Camp <email@alexvan.camp>"
+  ],
+  "description": "Manage and play sound files",
+  "license": "MIT",
+  "extension": {
+    "path": "extension/index.js"
+  }
+}

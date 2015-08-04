@@ -1,0 +1,6 @@
+{
+  "name": "lfg-sounds",
+  "dependencies": {
+    "multer": "^1.0.1"
+  }
+}
