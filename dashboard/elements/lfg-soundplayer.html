@@ -8,48 +8,68 @@
 <script>
 (function() {
     window.lfgSound = {
+        /**
+         * Creates a new NodeCG extension API instance.
+         * @param {string} soundname    The name of the soundfile to play.
+         */
         play: function (soundname) {
-        },
-        pause: function (soundname) {
-        },
-        stop: function (soundname) {
-        }
-    };
+            // Create an instance of the sound, which begins playing immediately.
+            var instance = createjs.Sound.play(soundname);
 
-    createjs.Sound.on('fileload', function (event) {
-        console.log(event.type, event.id, event.src);
-        return;
-
-        // This is fired for each sound that is registered.
-        var instance = createjs.Sound.play("sound");  // play using id.  Could also use full source path or event.src.
-        instance.on("complete", createjs.proxy(this.handleComplete, this));
-        instance.volume = 0.5;
-    });
-
-
-    NodeCG.Replicant('sounds', 'lfg-sounds')
-        .on('change', function(oldVal, newVal) {
-            var manifest = newVal.map(function(sound) {
-                return {
-                    id: sound.name,
-                    src: sound.file
+            // Set the volume
+            soundsRep.value.some(function(sound) {
+                if (sound.name === soundname) {
+                    instance.volume = sound.volume / 100;
+                    return true;
                 }
             });
 
-            createjs.Sound.registerSounds({
-                path: '/lfg-sounds/',
-                manifest: manifest
-            });
-        });
+            // Fix panning bugs caused by changes to how Panning works in new versions of Chrome and FF.
+            // This will be fixed in the next version of SoundJS, at which point this hack can be removed.
+            instance.pan = 0.0001;
+        },
 
-    NodeCG.Replicant('files', 'lfg-sounds')
+        /**
+         * Stops all currently playing sounds.
+         */
+        stop: function () {
+            createjs.Sound.stop();
+        }
+    };
+
+    var soundsRep = NodeCG.Replicant('sounds', 'lfg-sounds')
         .on('change', function(oldVal, newVal) {
-
+            registerSounds(newVal);
         });
 
-    /*NodeCG.listenFor('testSound', 'lfg-sounds', function(soundname) {
-        window.lfgSound.play(soundname);
-    });*/
+    // When any of the sound files change, remove and re-register all sounds.
+    // This will stop any currently playing sounds.
+    NodeCG.Replicant('files', 'lfg-sounds')
+        .on('change', function() {
+            createjs.Sound.removeAllSounds();
+            registerSounds(soundsRep.value);
+        });
+
+    // This currently only works if there is an instance of the API in the window
+    if (window.nodecg) {
+        nodecg.listenFor('testSound', 'lfg-sounds', function(soundname) {
+            window.lfgSound.play(soundname);
+        });
+    }
+
+    function registerSounds(sounds) {
+        var manifest = sounds.map(function(sound) {
+            return {
+                id: sound.name,
+                src: sound.file
+            }
+        });
+
+        createjs.Sound.registerSounds({
+            path: '/lfg-sounds/',
+            manifest: manifest
+        });
+    }
 
     Polymer({
         is: 'lfg-soundplayer'
