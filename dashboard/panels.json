@@ -1,7 +1,7 @@
 [
   {
     "name": "manage-files",
-    "title": "Sound Files",
+    "title": "Sounds",
     "width": 2,
     "file": "panel.html",
     "faIcon": "fa-volume-up"
