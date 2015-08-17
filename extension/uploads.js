@@ -35,7 +35,7 @@ module.exports = function(nodecg) {
         }
     );
 
-    app.get('/lfg-sounds/:filename', nodecg.util.authCheck, function (req, res, next) {
+    app.get('/lfg-sounds/:filename', function (req, res, next) {
         var resName = req.params.filename;
         var fileLocation = path.join(__dirname, '../sounds/', resName);
 
