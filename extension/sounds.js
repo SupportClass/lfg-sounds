@@ -30,4 +30,15 @@ module.exports = function(nodecg) {
             });
         }
     });
+
+    // Likewise, if there are any entries in the replicant that are no longer present in the config, remove them.
+    sounds.value.forEach(function(sound, index) {
+        var exists =  nodecg.bundleConfig.soundNames.some(function(soundName) {
+            return soundName === sound.name;
+        });
+
+        if (!exists) {
+            sounds.value.splice(index, 1);
+        }
+    });
 };

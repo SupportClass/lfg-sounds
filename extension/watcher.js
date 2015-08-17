@@ -31,7 +31,6 @@ module.exports = function(nodecg) {
         nodecg.error(e.stack);
     });
 
-
     // Initialize
     reloadFiles();
 
