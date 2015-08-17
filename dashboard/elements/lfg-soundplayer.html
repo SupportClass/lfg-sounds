@@ -53,10 +53,13 @@
     }
 
     function registerSounds(sounds) {
-        var manifest = sounds.map(function(sound) {
-            return {
-                id: sound.name,
-                src: sound.file
+        var manifest = [];
+        sounds.forEach(function(sound) {
+            if (sound.file) {
+                manifest.push({
+                    id: sound.name,
+                    src: sound.file
+                })
             }
         });
 
