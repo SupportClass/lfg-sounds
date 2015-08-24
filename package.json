@@ -1,7 +1,37 @@
 {
   "name": "lfg-sounds",
+  "version": "0.0.0",
   "dependencies": {
     "debounce": "^1.0.0",
     "multer": "^1.0.1"
+  },
+  "homepage": "http://supportclass.net",
+  "authors": [
+    "Alex Van Camp <email@alexvan.camp>"
+  ],
+  "description": "Manage and play sound files",
+  "license": "MIT",
+  "nodecg": {
+    "compatabilityRange": "~0.7.0",
+    "dashboardPanels": [
+      {
+        "name": "manage-files",
+        "title": "Sounds",
+        "width": 2,
+        "file": "panel.html",
+        "faIcon": "fa-volume-up"
+      },
+      {
+        "name": "edit-sounds",
+        "title": "Edit Sounds",
+        "width": 4,
+        "file": "edit-sounds.html",
+        "faIcon": "fa-volume-up",
+        "dialog": true
+      }
+    ],
+    "extension": {
+      "path": "extension/index.js"
+    }
   }
 }
