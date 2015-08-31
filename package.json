@@ -29,9 +29,6 @@
         "faIcon": "fa-volume-up",
         "dialog": true
       }
-    ],
-    "extension": {
-      "path": "extension/index.js"
-    }
+    ]
   }
 }
