@@ -6,10 +6,8 @@
     <title>lfg-wordfilter Panel</title>
     <script src="/components/webcomponentsjs/webcomponents-lite.min.js"></script>
     <link rel="import" href="components/paper-button/paper-button.html">
-    <link rel="import" href="elements/file-upload.html">
+    <link rel="import" href="components/nodecg-file-upload/nodecg-file-upload.html">
     <style>
-        #clear { display: none; }
-
         #edit,
         #fileupload #button,
         #fileupload #UploadBorder {
@@ -23,18 +21,12 @@
     </style>
 </head>
 <body>
-<file-upload id="fileupload" raised droppable target="/lfg-sounds/upload">Choose Files</file-upload>
-<paper-button id="clear">Clear</paper-button>
+<nodecg-file-upload id="fileupload" raised droppable target="/lfg-sounds/upload">Choose Files</nodecg-file-upload>
 <hr>
 <paper-button id="edit" nodecg-dialog="edit-sounds" class="nodecg-configure" raised>Edit sound assignments</paper-button>
 
 <script>
     var fileupload = document.getElementById('fileupload');
-    var clear = document.getElementById('clear');
-
-    clear.addEventListener('click', function() {
-        fileupload.clear();
-    }, false);
 
     fileupload.addEventListener('files-changed', function(e) {
         if (e.target.files.length > 0) {
