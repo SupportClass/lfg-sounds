@@ -6,9 +6,7 @@
     "multer": "^1.0.1"
   },
   "homepage": "http://supportclass.net",
-  "authors": [
-    "Alex Van Camp <email@alexvan.camp>"
-  ],
+  "author": "Alex Van Camp <email@alexvan.camp>",
   "description": "Manage and play sound files",
   "license": "MIT",
   "nodecg": {
