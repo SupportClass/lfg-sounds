@@ -16,6 +16,7 @@
         "name": "manage-files",
         "title": "Sounds",
         "width": 2,
+        "headerColor": "#564573",
         "file": "panel.html",
         "faIcon": "fa-volume-up"
       },
