@@ -1,12 +1,12 @@
 {
   "name": "lfg-sounds",
   "dependencies": {
-    "SoundJS": "0.6.1",
-    "iron-collapse": "PolymerElements/iron-collapse#~1.0.2",
-    "iron-icons": "PolymerElements/iron-icons#~1.0.3",
-    "iron-selector": "PolymerElements/iron-selector#~1.0.2",
+    "iron-collapse": "PolymerElements/iron-collapse#^1.0.2",
+    "iron-icons": "PolymerElements/iron-icons#^1.0.3",
+    "iron-selector": "PolymerElements/iron-selector#^1.0.2",
     "nodecg-file-upload": "NodeCGElements/nodecg-file-upload#~0.0.1",
-    "paper-button": "PolymerElements/paper-button#~1.0.3",
-    "paper-slider": "PolymerElements/paper-slider#~1.0.3"
+    "paper-button": "PolymerElements/paper-button#^1.0.3",
+    "paper-slider": "PolymerElements/paper-slider#^1.0.3",
+    "SoundJS": "0.6.1"
   }
 }
