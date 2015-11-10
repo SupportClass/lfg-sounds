@@ -39,10 +39,16 @@
 
     // When any of the sound files change, remove and re-register all sounds.
     // This will stop any currently playing sounds.
+    window.lfgSound.ready = false;
     NodeCG.Replicant('files', 'lfg-sounds')
         .on('change', function() {
             createjs.Sound.removeAllSounds();
             registerSounds(soundsRep.value);
+
+            if (!window.lfgSound.ready) {
+                window.lfgSound.ready = true;
+                document.dispatchEvent(new CustomEvent('lfgSoundsReady'));
+            }
         });
 
     // This currently only works if there is an instance of the API in the window
