@@ -19,9 +19,7 @@
                 }
             });
 
-            // Fix panning bugs caused by changes to how Panning works in new versions of Chrome and FF.
-            // This will be fixed in the next version of SoundJS, at which point this hack can be removed.
-            instance.pan = 0.0001;
+            return instance;
         },
 
         /**
