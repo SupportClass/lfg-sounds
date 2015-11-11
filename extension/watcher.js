@@ -20,8 +20,7 @@ module.exports = function(nodecg) {
     ],{
         ignored: /[\/\\]\./,
         persistent: true,
-        ignoreInitial: true,
-        usePolling: true // Non-polling is really buggy for us right now.
+        ignoreInitial: true
     });
 
     watcher.on('add', debounce(reloadFiles, 500));

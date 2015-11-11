@@ -39,10 +39,10 @@
         ready: function() {
             var self = this;
             var soundsRep = NodeCG.Replicant('sounds', 'lfg-sounds');
-            soundsRep.on('change', function(oldVal, newVal) {
+            soundsRep.on('change', function (oldVal, newVal) {
                 // If there is an existing <lfg-soundpanel-sound> element for this sound, edit that.
                 // Otherwise, make a new one and add it to the DOM.
-                newVal.forEach(function(sound) {
+                newVal.forEach(function (sound) {
                     var existingEl = self.$$('lfg-soundpanel-sound[name="' + sound.name + '"]');
                     if (existingEl) {
                         existingEl.volume = sound.volume;
@@ -57,8 +57,8 @@
                 });
 
                 // If there is an element for a sound that no longer exists, remove it.
-                Polymer.dom(self.root).querySelectorAll('lfg-soundpanel-sound').forEach(function(el) {
-                    var foundCorrespondingSound = newVal.some(function(sound) {
+                Polymer.dom(self.root).querySelectorAll('lfg-soundpanel-sound').forEach(function (el) {
+                    var foundCorrespondingSound = newVal.some(function (sound) {
                         return sound.name === el.name;
                     });
 
@@ -68,11 +68,11 @@
                 });
             });
 
-            this.addEventListener('change', function(e) {
+            this.addEventListener('change', function (e) {
                 var soundEl = upTo(e.target, 'lfg-soundpanel-sound');
 
-                // Update the  replicant with the new volume and file
-                soundsRep.value.some(function(sound, idx) {
+                // Update the replicant with the new volume and file
+                soundsRep.value.some(function (sound, idx) {
                     if (sound.name === soundEl.name) {
                         soundsRep.value[idx].volume = soundEl.volume;
                         soundsRep.value[idx].file = soundEl.file;
@@ -80,14 +80,6 @@
                     }
                 });
             })
-        },
-
-        /*
-         * Methods
-         */
-
-        toggle: function() {
-            this.$.collapse.toggle();
         }
     });
 })();

@@ -17,7 +17,7 @@ module.exports = function(nodecg) {
 
     // If any entries in the config aren't present in the replicant,
     // (which could happen when a persisted replicant value is loaded) add them.
-    nodecg.bundleConfig.soundNames.forEach(function(soundName, index){
+    nodecg.bundleConfig.soundNames.forEach(function(soundName){
         var exists = sounds.value.some(function(sound) {
             return sound.name === soundName;
         });

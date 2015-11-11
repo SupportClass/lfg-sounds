@@ -48,7 +48,7 @@ module.exports = function(nodecg) {
         res.sendFile(fileLocation);
     });
 
-    app.get('/lfg-sounds/player', function (req, res, next) {
+    app.get('/lfg-sounds/player', function (req, res) {
         res.sendFile(path.resolve(__dirname, '../client/lfg-soundplayer.html'));
     });
 

@@ -4,8 +4,8 @@
 (function() {
     window.lfgSound = {
         /**
-         * Creates a new NodeCG extension API instance.
-         * @param {string} soundname    The name of the soundfile to play.
+         * Create a new instance of a sound.
+         * @param {string} soundname - The name of the soundfile to play.
          */
         play: function (soundname) {
             // Create an instance of the sound, which begins playing immediately.
@@ -48,13 +48,6 @@
                 document.dispatchEvent(new CustomEvent('lfgSoundsReady'));
             }
         });
-
-    // This currently only works if there is an instance of the API in the window
-    if (window.nodecg) {
-        nodecg.listenFor('testSound', 'lfg-sounds', function(soundname) {
-            window.lfgSound.play(soundname);
-        });
-    }
 
     function registerSounds(sounds) {
         var manifest = [];
