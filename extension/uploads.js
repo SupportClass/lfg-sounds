@@ -52,5 +52,9 @@ module.exports = function(nodecg) {
         res.sendFile(path.resolve(__dirname, '../client/lfg-soundplayer.html'));
     });
 
+    app.get('/lfg-sounds/soundjs.min.js', function (req, res) {
+        res.sendFile(path.resolve(__dirname, '../client/soundjs.min.js'));
+    });
+
     nodecg.mount(app);
 };

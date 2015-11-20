@@ -1,4 +1,4 @@
-<script src="/graphics/lfg-sounds/components/SoundJS/lib/soundjs-0.6.1.min.js"></script>
+<script src="soundjs.min.js"></script>
 
 <script>
 (function() {
@@ -15,6 +15,7 @@
             soundsRep.value.some(function(sound) {
                 if (sound.name === soundname) {
                     instance.volume = sound.volume / 100;
+                    instance.pan = 0.0001;
                     return true;
                 }
             });
