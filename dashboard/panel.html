@@ -9,7 +9,6 @@
     <link rel="import" href="components/nodecg-file-upload/nodecg-file-upload.html">
     <style>
         #edit,
-        #fileupload #button,
         #fileupload #UploadBorder {
             display: block;
         }
@@ -21,22 +20,14 @@
     </style>
 </head>
 <body>
-<nodecg-file-upload id="fileupload" raised droppable target="/lfg-sounds/upload">Choose Files</nodecg-file-upload>
-<hr>
-<paper-button id="edit" nodecg-dialog="edit-sounds" class="nodecg-configure" raised>Edit sound assignments</paper-button>
+    <nodecg-file-upload id="fileupload" raised droppable target="/lfg-sounds/upload">
+        Choose Files
+    </nodecg-file-upload>
 
-<script>
-    var fileupload = document.getElementById('fileupload');
+    <hr>
 
-    fileupload.addEventListener('files-changed', function(e) {
-        if (e.target.files.length > 0) {
-            clear.style.display = 'block';
-            clear.style.visibility = 'visible';
-        } else {
-            clear.style.display = 'none';
-            clear.style.visibility = 'hidden';
-        }
-    }, false);
-</script>
+    <paper-button id="edit" nodecg-dialog="edit-sounds" class="nodecg-configure" raised>
+        Edit sound assignments
+    </paper-button>
 </body>
 </html>
