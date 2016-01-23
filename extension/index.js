@@ -2,11 +2,11 @@
 
 module.exports = function(nodecg) {
     if (!nodecg.bundleConfig) {
-        throw new Error('[lfg-sounds] No config found in cfg/eol-nucleus.json, aborting!');
+        throw new Error('[lfg-sounds] No config found in cfg/lfg-sounds.json, aborting!');
     }
 
     if (!nodecg.bundleConfig.soundNames) {
-        throw new Error('[lfg-sounds] No soundNames property present in cfg/eol-nucleus.json, aborting!');
+        throw new Error('[lfg-sounds] No soundNames property present in cfg/lfg-sounds.json, aborting!');
     }
 
     try {
