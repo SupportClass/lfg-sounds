@@ -26,7 +26,13 @@
         "width": 4,
         "file": "edit-sounds.html",
         "faIcon": "fa-volume-up",
-        "dialog": true
+        "dialog": true,
+        "dialogButtons": [
+          {
+            "name": "done",
+            "type": "dismiss"
+          }
+        ]
       }
     ]
   }
