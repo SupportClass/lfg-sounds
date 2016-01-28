@@ -56,7 +56,8 @@
             if (sound.file) {
                 manifest.push({
                     id: sound.name,
-                    src: sound.file
+                    src: sound.file,
+                    data: {channels: 100}
                 })
             }
         });
