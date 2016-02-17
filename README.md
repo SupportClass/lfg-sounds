@@ -1,5 +1,6 @@
 # lfg-sounds
-> Manage and play sounds in NodeCG bundles.  
+> Manage and play sounds in NodeCG bundles.
+
 ** Requires NodeCG@^0.7.2 **
 
 ## Usage
