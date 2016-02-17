@@ -13,7 +13,7 @@ module.exports = function (nodecg) {
 	});
 
 	// Instantiate replicant with defaults object, which will load if no persisted data is present.
-	var sounds = new nodecg.Replicant('sounds', {defaultValue: soundDefaults});
+	var sounds = nodecg.Replicant('sounds', {defaultValue: soundDefaults});
 
 	// If any entries in the config aren't present in the replicant,
 	// (which could happen when a persisted replicant value is loaded) add them.

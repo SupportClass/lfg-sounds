@@ -100,7 +100,7 @@
 
 		ready: function () {
 			var self = this;
-			var files = NodeCG.Replicant('files', 'lfg-sounds');
+			var files = NodeCG.Replicant('uploads', 'lfg-sounds');
 			files.on('change', function (oldVal, newVal) {
 				// Remove all options from the select element
 				while (self.$.select.item(1)) {
@@ -110,10 +110,10 @@
 				// For each file, add an option
 				newVal.forEach(function (file) {
 					var option = document.createElement('option');
-					option.name = file.filename;
-					option.value = file.filename;
-					option.innerText = file.filename;
-					if (file.filename === self.file) option.setAttribute('selected', true);
+					option.name = file.base;
+					option.value = file.base;
+					option.innerText = file.base;
+					if (file.base === self.file) option.setAttribute('selected', true);
 					self.$.select.add(option);
 				});
 			});

@@ -15,6 +15,9 @@
   "description": "Manage and play sound files",
   "license": "MIT",
   "nodecg": {
+    "uploads": {
+      "enabled": true
+    },
     "compatibleRange": "~0.7.0",
     "dashboardPanels": [
       {

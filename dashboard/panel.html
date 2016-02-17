@@ -2,17 +2,8 @@
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge; charset=UTF-8">
-	<meta name="viewport" content="width=device-width" initial-scale="1">
-	<title>lfg-wordfilter Panel</title>
-	<script src="components/webcomponentsjs/webcomponents-lite.min.js"></script>
 	<link rel="import" href="components/paper-button/paper-button.html">
-	<link rel="import" href="components/nodecg-file-upload/nodecg-file-upload.html">
 	<style>
-		#edit,
-		#fileupload #UploadBorder {
-			display: block;
-		}
-
 		paper-button {
 			display: block;
 			margin: 8px 0;
@@ -20,12 +11,6 @@
 	</style>
 </head>
 <body>
-	<nodecg-file-upload id="fileupload" raised droppable target="/lfg-sounds/upload">
-		Choose Files
-	</nodecg-file-upload>
-
-	<hr>
-
 	<paper-button id="edit" nodecg-dialog="edit-sounds" class="nodecg-configure" raised>
 		Edit sound assignments
 	</paper-button>

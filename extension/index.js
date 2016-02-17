@@ -1,5 +1,8 @@
 'use strict';
 
+var app = require('express')();
+var path = require('path');
+
 module.exports = function (nodecg) {
 	if (!nodecg.bundleConfig) {
 		throw new Error('[lfg-sounds] No config found in cfg/lfg-sounds.json, aborting!');
@@ -10,23 +13,19 @@ module.exports = function (nodecg) {
 	}
 
 	try {
-		require('./watcher')(nodecg);
-	} catch (e) {
-		nodecg.log.error('Failed to load "watcher" lib:', e.stack);
-		process.exit(1);
-	}
-
-	try {
 		require('./sounds')(nodecg);
 	} catch (e) {
 		nodecg.log.error('Failed to load "sounds" lib:', e.stack);
 		process.exit(1);
 	}
 
-	try {
-		require('./uploads')(nodecg);
-	} catch (e) {
-		nodecg.log.error('Failed to load "uploads" lib:', e.stack);
-		process.exit(1);
-	}
+	app.get('/lfg-sounds/player', function (req, res) {
+		res.sendFile(path.resolve(__dirname, '../client/lfg-soundplayer.html'));
+	});
+
+	app.get('/lfg-sounds/soundjs.min.js', function (req, res) {
+		res.sendFile(path.resolve(__dirname, '../client/soundjs.min.js'));
+	});
+
+	nodecg.mount(app);
 };
