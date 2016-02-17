@@ -1,14 +1,9 @@
 {
   "name": "lfg-sounds",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/SupportClass/lfg-sounds.git"
-  },
-  "dependencies": {
-    "chokidar": "^1.4.2",
-    "debounce": "^1.0.0",
-    "multer": "^1.0.1"
   },
   "homepage": "http://supportclass.net",
   "author": "Alex Van Camp <email@alexvan.camp>",
