@@ -11,7 +11,11 @@
   "license": "MIT",
   "nodecg": {
     "uploads": {
-      "enabled": true
+      "enabled": true,
+      "allowedTypes": [
+        "mp3",
+        "ogg"
+      ]
     },
     "compatibleRange": "~0.7.0",
     "dashboardPanels": [
