@@ -32,13 +32,12 @@ module.exports = function (nodecg) {
 	});
 
 	// Likewise, if there are any entries in the replicant that are no longer present in the config, remove them.
-	sounds.value.forEach(function (sound, index) {
-		var exists = nodecg.bundleConfig.soundNames.some(function (soundName) {
-			return soundName === sound.name;
-		});
-
+	/* eslint-disable no-loop-func */
+	for (let i = sounds.value.length - 1; i >= 0; i--) {
+		let exists = nodecg.bundleConfig.soundNames.some(soundName => soundName === sounds.value[i].name);
 		if (!exists) {
-			sounds.value.splice(index, 1);
+			sounds.value.splice(i, 1);
 		}
-	});
+	}
+	/* eslint-enable no-loop-func */
 };
