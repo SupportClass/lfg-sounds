@@ -17,7 +17,7 @@
         "ogg"
       ]
     },
-    "compatibleRange": "~0.7.0",
+    "compatibleRange": "~0.7.2",
     "dashboardPanels": [
       {
         "name": "manage-files",
