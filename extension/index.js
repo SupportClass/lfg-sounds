@@ -1,7 +1,7 @@
 'use strict';
 
-var app = require('express')();
-var path = require('path');
+const app = require('express')();
+const path = require('path');
 
 module.exports = function (nodecg) {
 	if (!nodecg.bundleConfig) {
@@ -19,11 +19,11 @@ module.exports = function (nodecg) {
 		process.exit(1);
 	}
 
-	app.get('/lfg-sounds/player', function (req, res) {
+	app.get('/lfg-sounds/player', (req, res) => {
 		res.sendFile(path.resolve(__dirname, '../client/lfg-soundplayer.html'));
 	});
 
-	app.get('/lfg-sounds/soundjs.min.js', function (req, res) {
+	app.get('/lfg-sounds/soundjs.min.js', (req, res) => {
 		res.sendFile(path.resolve(__dirname, '../client/soundjs.min.js'));
 	});
 

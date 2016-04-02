@@ -5,6 +5,10 @@
     "type": "git",
     "url": "https://github.com/SupportClass/lfg-sounds.git"
   },
+  "scripts": {
+    "test": "npm run static",
+    "static": "eslint client/lfg-soundplayer.html dashboard/**/*.js dashboard/**/*.html extension/**/*.js"
+  },
   "homepage": "http://supportclass.net",
   "author": "Alex Van Camp <email@alexvan.camp>",
   "description": "Manage and play sound files",
@@ -42,5 +46,15 @@
         ]
       }
     ]
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.0.2",
+    "eslint": "^2.6.0",
+    "eslint-config-xo": "^0.12.0",
+    "eslint-plugin-babel": "^3.1.0",
+    "eslint-plugin-html": "^1.4.0"
+  },
+  "dependencies": {
+    "express": "^4.13.4"
   }
 }

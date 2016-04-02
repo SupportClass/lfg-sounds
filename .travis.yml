@@ -1,0 +1,9 @@
+sudo: false
+language: node_js
+node_js:
+- v4
+- v5
+
+notifications:
+  slack:
+    secure: ezTt+YKE1kxJPRFthZ7UTZuCyBI2Jw1CmiTeUKaKD3mDSc2jhUh70hjrG0kxykYKuomkYlS/fPxWEHSK5X28XtA18tEZqjOnDG+YNCizFIat6Uq8dwUPhTJ/WAnq7CaSpH29uq90xNNWk3MAbqJMpHdYkWfFMHGkIuGDblcSjcI=

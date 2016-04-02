@@ -1,4 +1,4 @@
-# lfg-sounds
+# lfg-sounds [![Build Status](https://travis-ci.org/SupportClass/lfg-sounds.svg?branch=master)](https://travis-ci.org/SupportClass/lfg-sounds)
 > Manage and play sounds in NodeCG bundles.
 
 *Requires NodeCG@^0.7.2*

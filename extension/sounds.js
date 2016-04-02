@@ -1,10 +1,10 @@
 'use strict';
 
-var DEFAULT_VOLUME = 30;
+const DEFAULT_VOLUME = 30;
 
 module.exports = function (nodecg) {
 	// Create defaults array
-	var soundDefaults = nodecg.bundleConfig.soundNames.map(function (soundName) {
+	const soundDefaults = nodecg.bundleConfig.soundNames.map(soundName => {
 		return {
 			name: soundName,
 			volume: DEFAULT_VOLUME,
@@ -13,12 +13,12 @@ module.exports = function (nodecg) {
 	});
 
 	// Instantiate replicant with defaults object, which will load if no persisted data is present.
-	var sounds = nodecg.Replicant('sounds', {defaultValue: soundDefaults});
+	const sounds = nodecg.Replicant('sounds', {defaultValue: soundDefaults});
 
 	// If any entries in the config aren't present in the replicant,
 	// (which could happen when a persisted replicant value is loaded) add them.
-	nodecg.bundleConfig.soundNames.forEach(function (soundName) {
-		var exists = sounds.value.some(function (sound) {
+	nodecg.bundleConfig.soundNames.forEach(soundName => {
+		const exists = sounds.value.some(sound => {
 			return sound.name === soundName;
 		});
 
@@ -34,7 +34,7 @@ module.exports = function (nodecg) {
 	// Likewise, if there are any entries in the replicant that are no longer present in the config, remove them.
 	/* eslint-disable no-loop-func */
 	for (let i = sounds.value.length - 1; i >= 0; i--) {
-		let exists = nodecg.bundleConfig.soundNames.some(soundName => soundName === sounds.value[i].name);
+		const exists = nodecg.bundleConfig.soundNames.some(soundName => soundName === sounds.value[i].name);
 		if (!exists) {
 			sounds.value.splice(i, 1);
 		}
