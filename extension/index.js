@@ -22,6 +22,10 @@ module.exports = function (nodecg) {
 	app.get('/lfg-sounds/player', (req, res) => {
 		res.sendFile(path.resolve(__dirname, '../client/lfg-soundplayer.html'));
 	});
+	
+	app.get('/lfg-sounds/lfg-soundplayer.js ', (req, res) => {
+		res.sendFile(path.resolve(__dirname, '../client/lfg-soundplayer.js'));
+	});
 
 	app.get('/lfg-sounds/soundjs.min.js', (req, res) => {
 		res.sendFile(path.resolve(__dirname, '../client/soundjs.min.js'));
