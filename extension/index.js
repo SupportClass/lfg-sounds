@@ -23,7 +23,7 @@ module.exports = function (nodecg) {
 		res.sendFile(path.resolve(__dirname, '../client/lfg-soundplayer.html'));
 	});
 	
-	app.get('/lfg-sounds/lfg-soundplayer.js ', (req, res) => {
+	app.get('/lfg-sounds/lfg-soundplayer.js', (req, res) => {
 		res.sendFile(path.resolve(__dirname, '../client/lfg-soundplayer.js'));
 	});
 
