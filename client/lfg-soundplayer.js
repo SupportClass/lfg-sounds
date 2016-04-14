@@ -12,7 +12,7 @@
 		 * Create a new instance of a sound.
 		 * @param {string} soundname - The name of the soundfile to play.
 		 */
-		play(soundname) {
+		play: function(soundname) {
 			// Create an instance of the sound, which begins playing immediately.
 			var instance = createjs.Sound.play(soundname);
 
@@ -33,7 +33,7 @@
 		/**
 		 * Stops all currently playing sounds.
 		 */
-		stop() {
+		stop: function() {
 			createjs.Sound.stop();
 		}
 	};
