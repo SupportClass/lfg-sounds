@@ -3,7 +3,7 @@
 	'use strict';
 
 	const soundsRep = NodeCG.Replicant('sounds', 'lfg-sounds');
-	soundsRep.on('change', (oldVal, newVal) => {
+	soundsRep.on('change', function(oldVal, newVal) {
 		registerSounds(newVal);
 	});
 
@@ -17,7 +17,7 @@
 			const instance = createjs.Sound.play(soundname);
 
 			// Set the volume
-			soundsRep.value.some(sound => {
+			soundsRep.value.some(function(sound) {
 				if (sound.name === soundname) {
 					instance.volume = sound.volume / 100;
 					instance.pan = 0.0001;
@@ -42,7 +42,7 @@
 	// This will stop any currently playing sounds.
 	window.lfgSound.ready = false;
 	NodeCG.Replicant('files', 'lfg-sounds')
-		.on('change', () => {
+		.on('change', function () {
 			createjs.Sound.removeAllSounds();
 			registerSounds(soundsRep.value);
 
@@ -51,10 +51,10 @@
 				document.dispatchEvent(new CustomEvent('lfgSoundsReady'));
 			}
 		});
-
+	
 	function registerSounds(sounds) {
 		const manifest = [];
-		sounds.forEach(sound => {
+		sounds.forEach(function(sound) {
 			if (sound.file) {
 				manifest.push({
 					id: sound.name,
