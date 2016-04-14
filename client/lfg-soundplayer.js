@@ -2,7 +2,7 @@
 (function () {
 	'use strict';
 
-	const soundsRep = NodeCG.Replicant('sounds', 'lfg-sounds');
+	var soundsRep = NodeCG.Replicant('sounds', 'lfg-sounds');
 	soundsRep.on('change', function(oldVal, newVal) {
 		registerSounds(newVal);
 	});
@@ -14,7 +14,7 @@
 		 */
 		play(soundname) {
 			// Create an instance of the sound, which begins playing immediately.
-			const instance = createjs.Sound.play(soundname);
+			var instance = createjs.Sound.play(soundname);
 
 			// Set the volume
 			soundsRep.value.some(function(sound) {
@@ -51,9 +51,9 @@
 				document.dispatchEvent(new CustomEvent('lfgSoundsReady'));
 			}
 		});
-	
+
 	function registerSounds(sounds) {
-		const manifest = [];
+		var manifest = [];
 		sounds.forEach(function(sound) {
 			if (sound.file) {
 				manifest.push({
