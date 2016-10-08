@@ -49,25 +49,31 @@
 		#playStop.playing {
 			color: var(--paper-red-500);
 		}
+
+		#select {
+			min-width: 1px;
+		}
+
+		paper-slider {
+			width: 120px;
+			margin-left: -16px;
+		}
 	</style>
 
 	<template>
 		<button class="heading" on-click="toggle">[[name]]</button>
 		<iron-collapse id="collapse" no-animation>
-			<div class="collapse-content">
-				<div>
+			<div class="collapse-content layout horizontal">
+				<div class="flex-none">
 					<div>Volume</div>
 					<paper-slider pin min="0" max="100" value="{{volume}}"></paper-slider>
 				</div>
 
-				<div class="layout horizontal">
-					<select id="select" name="soundfile" on-change="_onSelectChange">
-						<option value="">-- Choose a file --</option>
-					</select>
+				<select id="select" class="flex" name="soundfile" on-change="_onSelectChange">
+					<option value="">-- Choose a file --</option>
+				</select>
 
-					<paper-icon-button id="playStop" on-tap="_handlePlayStopTap" icon="av:play-arrow">
-					</paper-icon-button>
-				</div>
+				<paper-icon-button id="playStop" class="flex-none" on-tap="_handlePlayStopTap" icon="av:play-arrow"></paper-icon-button>
 			</div>
 		</iron-collapse>
 	</template>
